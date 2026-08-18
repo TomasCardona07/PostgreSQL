@@ -1,4 +1,5 @@
 package services;
+import java.util.HashMap;
 import java.util.Scanner;
 import repository.VideojuegoRepository;
 import model.Videojuego;
@@ -28,5 +29,24 @@ public class VideojuegoServices {
         else{
             System.err.println("ID ya existente");
         }
+    }
+
+    public void mostrarVideojuegos(){
+        System.out.println("VIDEOJUEGOS REGISTRADOS:");
+        HashMap<Integer,Videojuego> mapa = mapas.retornarVideojuegos();
+        for (Videojuego map : mapa.values()) {
+            System.out.println("ID: "+ map.getId());
+            System.out.println("NOMBRE: "+ map.getNombre());
+            System.out.println("GENERO: "+ map.getGenero());
+            System.out.println("PRECIO: "+ map.getPrecio());
+            System.out.println("CANTIDAD: "+ map.getCantidad());
+            System.out.println("============================");
+        }
+    }
+
+    public void buscarVideojuego(){
+        System.out.println("BUSCAR VIDEOJUEGO:");
+        System.out.println("Ingrese el id del videojuego que desea buscar");
+        //pendiente: hacer metodo de buscar videojuego
     }
 }

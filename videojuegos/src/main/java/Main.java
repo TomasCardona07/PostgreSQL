@@ -12,6 +12,7 @@ public class Main {
                     services.registrarVideojuego();
                     break;
                 case 2:
+                    services.mostrarVideojuegos();
                     break;
                 case 3:
                     break;

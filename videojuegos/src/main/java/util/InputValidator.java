@@ -44,7 +44,7 @@ public class InputValidator {
                 System.err.println("Debes ingresar un numero");
             }
             catch(IllegalArgumentException e){ 
-                System.err.println("Error: "+e.getMessage()); 
+                System.err.println("Error: "+e.getMessage());
             }
         } while (!precioCorrecto);
         return precio;
