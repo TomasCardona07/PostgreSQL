@@ -46,4 +46,8 @@ public class VideojuegoRepository {
         Videojuego videojuego = mapa.get(id);
         videojuego.setCantidad(cantidad);
     }
+
+    public Boolean mapaVacio(HashMap<?,?> map){
+        return this.mapa.isEmpty();
+    }
 }

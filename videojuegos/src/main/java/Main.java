@@ -15,10 +15,13 @@ public class Main {
                     services.mostrarVideojuegos();
                     break;
                 case 3:
+                    services.buscarVideojuego();
                     break;
                 case 4:
+                    services.actualizarVideojuego();
                     break;
                 case 5:
+                    services.eliminarVideojuego();
                     break;
                 default:
                     System.out.println("GRACIAS POR USAR EL SISTEMA :)");

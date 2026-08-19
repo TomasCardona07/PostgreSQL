@@ -24,13 +24,15 @@ public class Videojuego {
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
-        public void setGenero(String genero){
+    public void setGenero(String genero){
         this.genero = genero;
     }
-        public void setPrecio(BigDecimal precio){
+
+    public void setPrecio(BigDecimal precio){
         this.precio = precio;
     }
-        public void setCantidad(int cantidad){
+    
+    public void setCantidad(int cantidad){
         this.cantidad = cantidad;
     }
 }

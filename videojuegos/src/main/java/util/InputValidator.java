@@ -69,4 +69,6 @@ public class InputValidator {
         } while (!positivo);
         return cantidad;
     }
+
+    
 }
