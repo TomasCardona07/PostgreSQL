@@ -47,6 +47,7 @@ public class VideojuegoServices {
     public void buscarVideojuego(){
         System.out.println("BUSCAR VIDEOJUEGO:");
         System.out.println("Ingrese el id del videojuego que desea buscar");
-        //pendiente: hacer metodo de buscar videojuego
+        int id = Integer.parseInt(scr.nextLine());
+        //pendiente: Revisar y crear metodos en repository para retornar datos del objeto
     }
 }
