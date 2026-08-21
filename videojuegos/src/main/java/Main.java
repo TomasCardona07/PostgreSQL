@@ -26,6 +26,7 @@ public class Main {
                 default:
                     System.out.println("GRACIAS POR USAR EL SISTEMA :)");
                     break;
+                    //pendiente: conectar java con postgreSQL usando JDBC
             }
         }
     }
