@@ -1,8 +1,19 @@
 package repository;
 import java.util.HashMap;
+
+import config.Conexion;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.math.*;
 import model.Videojuego;
 public class VideojuegoRepository {
+
+    private Connection connection;
+    
+    VideojuegoRepository() throws SQLException{ //Constructor para base de datos
+        Conexion conexion = new Conexion(); //Esto normalmente se hace en otra clase
+        this.connection = conexion.conectar();
+    }
 
     private final HashMap<Integer,Videojuego> mapa = new HashMap<>();
 
