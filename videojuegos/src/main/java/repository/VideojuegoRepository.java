@@ -1,18 +1,18 @@
 package repository;
 import java.util.HashMap;
-
-import config.Conexion;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.math.*;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import model.Videojuego;
 public class VideojuegoRepository {
 
     private Connection connection;
-    
-    VideojuegoRepository() throws SQLException{ //Constructor para base de datos
-        Conexion conexion = new Conexion(); //Esto normalmente se hace en otra clase
-        this.connection = conexion.conectar();
+
+    public VideojuegoRepository(Connection connection){
+        this.connection = connection;
     }
 
     private final HashMap<Integer,Videojuego> mapa = new HashMap<>();
@@ -28,6 +28,22 @@ public class VideojuegoRepository {
 
 
     public HashMap<Integer,Videojuego> retornarVideojuegos(){
+        String sql = "SELECT * FROM videojuegos";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            while (result.next()) {
+                int id = result.getInt("id");
+                String nombre = result.getString("nombre");
+                String genero = result.getString("genero");
+                BigDecimal precio = result.getBigDecimal("precio");
+                int cantidad = result.getInt("cantidad");
+                Videojuego videojuego = new Videojuego(id, nombre, genero, precio, cantidad);
+                mapa.put(id, videojuego);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error en extraer datos de PostgreSQL");
+        }
         return this.mapa;
     }
 

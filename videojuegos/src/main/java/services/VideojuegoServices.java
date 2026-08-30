@@ -8,9 +8,14 @@ import util.*;
 public class VideojuegoServices {
 
     Scanner scr = new Scanner(System.in);
-    VideojuegoRepository mapas = new VideojuegoRepository();
-    InputValidator validaciones = new InputValidator();
 
+    private VideojuegoRepository mapas;
+
+    public VideojuegoServices(VideojuegoRepository repository){
+        this.mapas = repository;
+    }
+
+    InputValidator validaciones = new InputValidator();
 
     public void registrarVideojuego(){
         System.out.println("REGISTRAR VIDEOJUEGO:");
