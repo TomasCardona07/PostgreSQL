@@ -20,7 +20,7 @@ public class VideojuegoServices {
     public void registrarVideojuego(){
         System.out.println("REGISTRAR VIDEOJUEGO:");
         int id = validaciones.validarNegativos(scr, "Ingrese el id del videojuego");
-        if (mapas.obtenerId(id) == null) {
+        if (mapas.juegoExistente(id) == null) {
             System.out.println("Ingrese el nombre del videojuego");
             String nombre = scr.nextLine();
             System.out.println("Ingrese el genero del videojuego");
@@ -56,7 +56,7 @@ public class VideojuegoServices {
     public void buscarVideojuego(){
         System.out.println("BUSCAR VIDEOJUEGO:");
         int id = validaciones.validarNegativos(scr, "Ingrese el id del videojuego que desea buscar");
-        Videojuego videojuego = mapas.obtenerId(id);
+        Videojuego videojuego = mapas.obtenerVideojuego(id);
         if (videojuego != null) {
             System.out.println("ID: "+ videojuego.getId());
             System.out.println("NOMBRE: "+ videojuego.getNombre());
@@ -70,11 +70,12 @@ public class VideojuegoServices {
 
     public void actualizarVideojuego(){
         int id = validaciones.validarNegativos(scr, "Ingrese el id del videojuego que desea modificar");
-        Videojuego videojuego = mapas.obtenerId(id);
+        Integer videojuego = mapas.juegoExistente(id);
         if (videojuego != null) {
             System.out.println("VIDEOJUEGO ENCONTRADO");
             System.out.println("Ingrese el nuevo nombre del juego");
             String nombre = scr.nextLine();
+            mapas.cambiarNombre(id, nombre);
             System.out.println("Ingrese el nuevo genero del videojuego");
             String genero = scr.nextLine();
             BigDecimal precio = validaciones.validarPrecio(scr);
@@ -88,7 +89,7 @@ public class VideojuegoServices {
 
     public void eliminarVideojuego(){
         int id = validaciones.validarNegativos(scr,"Ingrese el id del videojuego que desea eliminar");
-        if(mapas.obtenerId(id) != null){
+        if(mapas.juegoExistente(id) != null){
             mapas.eliminarVideojuego(id);
             System.out.println("VIDEOJUEGO ELIMINADO");
         }
