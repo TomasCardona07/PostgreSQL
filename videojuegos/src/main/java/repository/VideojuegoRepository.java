@@ -19,10 +19,7 @@ public class VideojuegoRepository {
     private final HashMap<Integer,Videojuego> mapa = new HashMap<>();
 
     public void agregarVideojuego(int id, Videojuego videojuego){
-        String sql = """
-                INSERT INTO videojuegos(id,nombre,genero,precio,cantidad)
-                VALUES(?,?,?,?,?)
-                """;
+        String sql = "INSERT INTO videojuegos(id,nombre,genero,precio,cantidad) VALUES(?,?,?,?,?)";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1,id);
@@ -108,11 +105,7 @@ public class VideojuegoRepository {
 
 
     public void cambiarNombre(int id,String nombre){
-        String sql = """
-                UPDATE videojuegos
-                SET nombre = ?
-                WHERE id = ?
-                """;;
+        String sql = "UPDATE videojuegos SET nombre = ? WHERE id = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, nombre);
