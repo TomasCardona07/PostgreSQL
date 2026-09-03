@@ -1,4 +1,7 @@
 package services;
+import java.util.HashMap;
+
+import model.Paciente;
 import repository.RepositoryCita;
 import repository.RepositoryPaciente;
 
@@ -21,4 +24,15 @@ public class Services {
         }
     }
 
+    public void registrarPaciente(Integer id,String nombre,String telefono){
+        Paciente paciente = new Paciente(id, nombre, telefono);
+        repositoryPaciente.registrarPaciente(id, paciente);
+    }
+
+    public HashMap<Integer,Paciente> mostrarPacientes(){
+        if (repositoryPaciente.mostrarPacientes().isEmpty()) {
+            //Se recomienda lanzar excepcion
+        }
+        return repositoryPaciente.mostrarPacientes();
+    }
 }
