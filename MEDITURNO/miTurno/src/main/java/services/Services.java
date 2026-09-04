@@ -30,9 +30,11 @@ public class Services {
     }
 
     public HashMap<Integer,Paciente> mostrarPacientes(){
-        if (repositoryPaciente.mostrarPacientes().isEmpty()) {
-            //Se recomienda lanzar excepcion
+        HashMap<Integer,Paciente> pacientes = repositoryPaciente.mostrarPacientes();
+
+        if (pacientes.isEmpty()) {
+            return null; //se recomienda lanzar excepción
         }
-        return repositoryPaciente.mostrarPacientes();
+        return pacientes;
     }
 }

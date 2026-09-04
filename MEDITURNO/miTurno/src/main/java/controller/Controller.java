@@ -3,8 +3,10 @@ package controller;
 import util.Util;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Scanner;
 import config.DataBase;
+import model.Paciente;
 import repository.RepositoryCita;
 import repository.RepositoryPaciente;
 import services.Services;
@@ -45,9 +47,21 @@ public class Controller {
                         }
                         break;
                     case 2:
-                        //pendiente
+                        HashMap<Integer,Paciente> paciente = services.mostrarPacientes();
+                        if (paciente != null) {
+                            for (Paciente p : paciente.values()) {
+                                System.out.println("ID: " + p.id());
+                                System.out.println("NOMBRE: " + p.nombre());
+                                System.out.println("TELEFONO: " + p.telefono());
+                                System.out.println("-----------------------");
+                            }
+                        }
+                        else{
+                            System.err.println("No hay pacientes registrados");
+                        }
                         break;
                     default:
+
                         break;
                 }
             }
