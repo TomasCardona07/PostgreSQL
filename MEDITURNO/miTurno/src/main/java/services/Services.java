@@ -37,4 +37,14 @@ public class Services {
         }
         return pacientes;
     }
+
+    public Paciente buscarPaciente(Integer id){
+        Paciente paciente = repositoryPaciente.buscarPaciente(id);
+        if (paciente == null) {
+            return null;
+        }
+        else{
+            return paciente;
+        }
+    }
 }

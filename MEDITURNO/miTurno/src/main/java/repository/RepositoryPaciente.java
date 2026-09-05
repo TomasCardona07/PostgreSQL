@@ -66,5 +66,24 @@ public class RepositoryPaciente {
         }
         return mapaPacientes;
     }
+
+    public Paciente buscarPaciente(Integer id){
+        String sql = "SELECT * FROM paciente WHERE id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet resultSet =  statement.executeQuery();
+            if (resultSet.next()) {
+                id = resultSet.getInt("id");
+                String nombre = resultSet.getString("nombre");
+                String telefono = resultSet.getString("telefono");
+                Paciente paciente = new Paciente(id, nombre, telefono);
+                return paciente;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error " + e.getMessage());
+        }
+        return null;
+    }
 }
 

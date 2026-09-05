@@ -27,7 +27,7 @@ public class Controller {
             Services services = new Services(repositoryCita,repositoryPaciente);
 
             Integer eleccion = null;
-
+            menuPaciente:
             while (true) {
                 eleccion = util.validarMenuPaciente();
                 switch (eleccion) {
@@ -60,9 +60,22 @@ public class Controller {
                             System.err.println("No hay pacientes registrados");
                         }
                         break;
-                    default:
-
+                    case 3:
+                        Integer buscarId = util.validarNegativosInt("Ingrese el id del usuario que desea buscar");
+                        Paciente paciente2 = services.buscarPaciente(buscarId);
+                        if (paciente2 != null) {
+                            System.out.println("PACIENTE ENCONTRADO");
+                            System.out.println("ID: " + paciente2.id());
+                            System.out.println("NOMBRE: " + paciente2.nombre());
+                            System.out.println("TELEFONO: " + paciente2.telefono());
+                        }
+                        else{
+                            System.out.println("NO EXISTE UN PACIENTE REGISTRADO CON ESE ID");
+                        }
                         break;
+                    default:
+                        System.out.println("GRACIAS POR USAR EL SISTEMA :)");
+                        break menuPaciente;
                 }
             }
         } catch (SQLException e) {
