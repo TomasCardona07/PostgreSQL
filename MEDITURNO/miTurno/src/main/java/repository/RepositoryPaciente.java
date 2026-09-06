@@ -85,5 +85,19 @@ public class RepositoryPaciente {
         }
         return null;
     }
+
+
+    public void cambiarTelefono(Paciente paciente){
+        String sql = "UPDATE paciente SET telefono = ? WHERE ID = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, paciente.telefono());
+            statement.setInt(2, paciente.id());
+            statement.executeUpdate();
+            mapaPacientes.put(paciente.id(), paciente);
+        } catch (SQLException e) {
+            System.err.println("ERROR " +e.getMessage() );
+        }
+    }
 }
 

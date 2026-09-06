@@ -47,4 +47,14 @@ public class Services {
             return paciente;
         }
     }
+
+    public void cambiarTelefonoPaciente(String tel,Paciente paciente){
+        try {
+            paciente = paciente.cambiarTelefono(tel);
+        } catch (NullPointerException e) {
+            System.err.println("error " + e.getMessage());
+        }
+        
+        repositoryPaciente.cambiarTelefono(paciente);
+    }
 }

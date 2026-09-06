@@ -1,5 +1,6 @@
 package util;
 import java.util.Scanner;
+
 public class Util {
     Scanner entrada = new Scanner(System.in);
 
@@ -36,8 +37,10 @@ public class Util {
                     System.out.println("Numero no valido");
                 }
             } while (num < 0);
-        } catch (NumberFormatException e) {
-            System.err.println("Ingrese un numero por favor");
+        }catch (NumberFormatException e){
+            System.err.println("El numero no puede estar vacio");
+        }catch(NullPointerException e){
+            System.err.println("No puede estar vacio");
         }
         return num;
     }

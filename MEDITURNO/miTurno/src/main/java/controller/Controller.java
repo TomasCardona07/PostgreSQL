@@ -62,15 +62,28 @@ public class Controller {
                         break;
                     case 3:
                         Integer buscarId = util.validarNegativosInt("Ingrese el id del usuario que desea buscar");
-                        Paciente paciente2 = services.buscarPaciente(buscarId);
-                        if (paciente2 != null) {
+                        Paciente buscPaciente = services.buscarPaciente(buscarId);
+                        if (buscPaciente != null) {
                             System.out.println("PACIENTE ENCONTRADO");
-                            System.out.println("ID: " + paciente2.id());
-                            System.out.println("NOMBRE: " + paciente2.nombre());
-                            System.out.println("TELEFONO: " + paciente2.telefono());
+                            System.out.println("ID: " + buscPaciente.id());
+                            System.out.println("NOMBRE: " + buscPaciente.nombre());
+                            System.out.println("TELEFONO: " + buscPaciente.telefono());
                         }
                         else{
                             System.out.println("NO EXISTE UN PACIENTE REGISTRADO CON ESE ID");
+                        }
+                        break;
+                    case 4:
+                        Integer idCambiarTelefono = util.validarNegativosInt("Ingrese el id del usuario que desea buscar");
+                        Paciente pacienteExistente = services.buscarPaciente(idCambiarTelefono);
+                        if (pacienteExistente != null) {
+                            System.out.println("Ingrese el nuevo telefono del paciente:");
+                            String tel = entrada.nextLine();
+                            services.cambiarTelefonoPaciente(tel,pacienteExistente); 
+                            System.out.println("telefono cambiado con exito");
+                        }
+                        else{
+                            System.err.println("Paciente no existente");
                         }
                         break;
                     default:
