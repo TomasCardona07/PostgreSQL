@@ -99,5 +99,17 @@ public class RepositoryPaciente {
             System.err.println("ERROR " +e.getMessage() );
         }
     }
+
+    public void eliminarPaciente(Integer id){
+        String sql = "DELETE FROM paciente WHERE ID = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+            mapaPacientes.remove(id);
+        } catch (SQLException e) {
+            System.err.println("Error " + e.getMessage());
+        }
+    }
 }
 

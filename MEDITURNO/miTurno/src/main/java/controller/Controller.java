@@ -86,6 +86,17 @@ public class Controller {
                             System.err.println("Paciente no existente");
                         }
                         break;
+                    case 5:
+                        Integer idEliminarPaciente = util.validarNegativosInt("Ingrese el id del paciente que desea eliminar");
+                        Boolean pacienteEliminar = services.pacienteExistente(idEliminarPaciente);
+                        if (pacienteEliminar) {
+                            services.eliminarPaciente(idEliminarPaciente);
+                            System.out.println("PACIENTE ELIMINADO");
+                        }
+                        else{
+                            System.err.println("Paciente no encontrado");
+                        }
+                        break;
                     default:
                         System.out.println("GRACIAS POR USAR EL SISTEMA :)");
                         break menuPaciente;

@@ -57,4 +57,7 @@ public class Services {
         
         repositoryPaciente.cambiarTelefono(paciente);
     }
+    public void eliminarPaciente(Integer id){
+        repositoryPaciente.eliminarPaciente(id);
+    }
 }
