@@ -2,16 +2,14 @@ package services;
 import java.util.HashMap;
 
 import model.Paciente;
-import repository.RepositoryCita;
 import repository.RepositoryPaciente;
 
-public class Services {
+public class ServicesPaciente {
     
-    private RepositoryCita repositoryCita;
     private RepositoryPaciente repositoryPaciente;
 
-    public Services(RepositoryCita repositoryCita,RepositoryPaciente repositoryPaciente){
-        this.repositoryCita = repositoryCita;
+    public ServicesPaciente(RepositoryPaciente repositoryPaciente){
+
         this.repositoryPaciente = repositoryPaciente;
     }
 

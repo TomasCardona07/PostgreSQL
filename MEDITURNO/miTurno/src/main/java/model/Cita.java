@@ -16,4 +16,7 @@ public record Cita(Integer id, Paciente idPaciente,String especialidad,String es
             throw new IllegalArgumentException("La fecha  no puede estar vacia");
         }
     }
+    public Cita cambiarEstado(String estado){
+        return new Cita(this.id, this.idPaciente, this.especialidad, estado, this.fecha);
+    }
 }
