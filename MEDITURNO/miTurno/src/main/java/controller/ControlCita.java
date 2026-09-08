@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 import model.Cita;
@@ -40,10 +41,24 @@ public class ControlCita {
                         }
                     }
                     else{
-                        System.err.println("Paciente no existete");
+                        System.err.println("Paciente no existente");
                     }
                     break;
                 case 2:
+                    HashMap<Integer,Cita> mapaCitas = servicesCita.mostrarCitas();
+                    if (mapaCitas != null) {
+                        for (Cita cita : mapaCitas.values()) {
+                            System.out.println("ID DE LA CITA: " + cita.id());
+                            System.out.println("ID PACIENTE: " + cita.idPaciente().id());
+                            System.out.println("ESPECIALIDAD: " +cita.especialidad());
+                            System.out.println("ESTADO: " + cita.estado());
+                            System.out.println("FECHA: " + cita.fecha());
+                            System.out.println("--------------------------");
+                        }
+                    }
+                    else{
+                        System.err.println("no hay citas registradas");
+                    }
                     break;
 
                 case 3:

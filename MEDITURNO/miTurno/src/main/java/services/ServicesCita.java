@@ -1,5 +1,7 @@
 package services;
 
+import java.util.HashMap;
+
 import model.Cita;
 import repository.RepositoryCita;
 
@@ -22,5 +24,9 @@ public class ServicesCita {
 
     public void registarCita(Cita cita){
         repositoryCita.registrarCita(cita);
+    }
+
+    public HashMap<Integer,Cita> mostrarCitas(){
+        return repositoryCita.mostrarCitas();
     }
 }
