@@ -94,4 +94,25 @@ public class RepositoryCita {
         }
         return null;
     }
+
+    public HashMap<Integer,Cita> citasPaciente(Integer idPaciente,Paciente paciente){
+        String sql = "SELECT * FROM cita WHERE id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, idPaciente);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Integer idCita = resultSet.getInt("id");
+                String estado = resultSet.getString("estado");
+                String especialidad = resultSet.getString("especialidad");
+                String fecha = resultSet.getString("fecha");
+                Cita cita = new Cita(idCita, paciente, especialidad, estado, fecha);
+                mapaCitas.put(idCita, cita);
+            }
+            return mapaCitas;
+        } catch (SQLException e) {
+            System.err.println("Error " + e.getMessage());
+        }
+        return null;
+    }
 }

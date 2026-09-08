@@ -62,6 +62,27 @@ public class ControlCita {
                     break;
 
                 case 3:
+                    Integer id = util.validarNegativosInt("Ingrese el id del paciente");
+                    Paciente pacienteEncontrado = servicesPaciente.buscarPaciente(id);
+                    if (pacienteEncontrado != null) {
+                        Boolean citaExistente = servicesCita.citaExistente(id);
+                        if (citaExistente) {
+                            HashMap<Integer,Cita> citasPaciente = servicesCita.citasPaciente(id,pacienteEncontrado);
+                            for (Cita cita : citasPaciente.values()) {
+                                System.out.println("ID CITA: " + cita.id());
+                                System.out.println("ESPECIALIDAD: " + cita.especialidad());
+                                System.out.println("ESTADO: " + cita.estado());
+                                System.out.println("FECHA: " + cita.fecha());
+                                System.out.println("-----------------------------");
+                            }
+                        }
+                        else{
+                            System.out.println("El paciente no tiene citas asignadas");
+                        }
+                    }
+                    else{
+                        System.err.println("PACIENTE NO REGISTRADO");
+                    }
                     break;
                 case 4:
                     break;

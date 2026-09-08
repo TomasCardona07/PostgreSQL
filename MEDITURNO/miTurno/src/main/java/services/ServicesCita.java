@@ -3,6 +3,7 @@ package services;
 import java.util.HashMap;
 
 import model.Cita;
+import model.Paciente;
 import repository.RepositoryCita;
 
 public class ServicesCita {
@@ -28,5 +29,9 @@ public class ServicesCita {
 
     public HashMap<Integer,Cita> mostrarCitas(){
         return repositoryCita.mostrarCitas();
+    }
+
+    public HashMap<Integer,Cita> citasPaciente(Integer idPaciente,Paciente paciente){
+        return repositoryCita.citasPaciente(idPaciente,paciente);
     }
 }
