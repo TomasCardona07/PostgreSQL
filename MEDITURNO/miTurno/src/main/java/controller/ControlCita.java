@@ -85,13 +85,20 @@ public class ControlCita {
                     }
                     break;
                 case 4:
+                    Integer idCita = util.validarNegativosInt("Ingrese el id de la cita que desea cancelar");
+                    Boolean citaExistente = servicesCita.citaExistente(idCita);
+                    if (citaExistente) {
+                        servicesCita.cancelarCita(idCita);
+                        System.out.println("LA CITA HA SIDO CANCELADA");
+                    }
+                    else{
+                        System.err.println("no hay citas registradas con ese id");
+                    }
                     break;
                 default:
                     ciclo = false;
                     break;
             }
         }
-
-
     }
 }

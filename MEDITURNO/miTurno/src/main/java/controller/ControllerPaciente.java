@@ -92,5 +92,6 @@ public class ControllerPaciente {
                     break menuPaciente;
             }
         }
+        entrada.close();
     }
 }

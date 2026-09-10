@@ -34,4 +34,8 @@ public class ServicesCita {
     public HashMap<Integer,Cita> citasPaciente(Integer idPaciente,Paciente paciente){
         return repositoryCita.citasPaciente(idPaciente,paciente);
     }
+
+    public void cancelarCita(Integer id){
+        repositoryCita.cancelarCita(id);
+    }
 }

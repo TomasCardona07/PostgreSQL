@@ -114,5 +114,22 @@ public class RepositoryCita {
             System.err.println("Error " + e.getMessage());
         }
         return null;
+    
+    }
+
+
+    public void cancelarCita(Integer id){
+        String sql = """
+                UPDATE cita
+                SET estado = 'CANCELADA'
+                WHERE id = ?;
+                """;
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error " + e.getMessage());
+        }
     }
 }
