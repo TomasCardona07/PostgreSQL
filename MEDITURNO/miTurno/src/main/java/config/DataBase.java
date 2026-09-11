@@ -9,7 +9,7 @@ public class DataBase {
 
     private final String url = "jdbc:postgresql://localhost:5432/mediTurno";    
     private final String user = "postgres";
-    private final String password = "tomi.cardo";
+    private final String password = null;
 
     public Connection conectarDb() throws SQLException{
         return DriverManager.getConnection(url,user,password);

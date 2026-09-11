@@ -3,7 +3,7 @@ package controller;
 import util.Util;
 import java.util.HashMap;
 import java.util.Scanner;
-import model.Paciente;
+import model.*;
 import services.ServicesPaciente;
 import services.ServicesCita;
 public class ControllerPaciente {
@@ -75,10 +75,17 @@ public class ControllerPaciente {
                     break;
                 case 5:
                     Integer idEliminarPaciente = util.validarNegativosInt("Ingrese el id del paciente que desea eliminar");
-                    Boolean pacienteEliminar = servicesPaciente.pacienteExistente(idEliminarPaciente);
-                    if (pacienteEliminar) {
-                        servicesPaciente.eliminarPaciente(idEliminarPaciente);
-                        System.out.println("PACIENTE ELIMINADO");
+                    Paciente pacienteEliminar = servicesPaciente.buscarPaciente(idEliminarPaciente);
+                    if (pacienteEliminar != null) {
+                        HashMap<Integer,Cita> citasPaciente = servicesCita.citasPaciente(idEliminarPaciente, pacienteEliminar);
+
+                        if (citasPaciente.isEmpty()) {
+                            servicesPaciente.eliminarPaciente(idEliminarPaciente);
+                            System.out.println("PACIENTE ELIMINADO");
+                        }
+                        else{
+                            System.err.println("El paciente tiene citas registradas y no se puede eliminar");
+                        }
                     }
                     else{
                         System.err.println("Paciente no encontrado");

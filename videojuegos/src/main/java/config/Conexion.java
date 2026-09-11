@@ -7,7 +7,7 @@ public class Conexion {
 
     private final String url = "jdbc:postgresql://localhost:5432/tienda";
     private final String user = "postgres";
-    private final String password = "tomi.cardo";
+    private final String password = null;
     
     public Connection conectar() throws SQLException{
         return DriverManager.getConnection(url,user,password);

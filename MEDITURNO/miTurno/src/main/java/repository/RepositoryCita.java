@@ -114,7 +114,6 @@ public class RepositoryCita {
             System.err.println("Error " + e.getMessage());
         }
         return null;
-    
     }
 
 

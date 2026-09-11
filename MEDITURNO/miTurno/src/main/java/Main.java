@@ -26,10 +26,4 @@ public class Main {
             System.err.println("Error " + e.getMessage());
         }
     }
-    /*
-    pendiente:
-    -validar util: no permitir String en el id
-    - añadir funcion: permitir cancelar citas
-    -no eliminar un paciente con citas registradas
-    */
 }

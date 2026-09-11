@@ -28,20 +28,19 @@ public class Util {
     }
 
     public Integer validarNegativosInt(String mensaje){
-        Integer num = null;
-        try {
-            do {
+        Integer num = -1;
+        do {
+            try {
                 System.out.println(mensaje);
                 num = Integer.parseInt(entrada.nextLine());
                 if (num < 0) {
                     System.out.println("Numero no valido");
                 }
-            } while (num < 0);
-        }catch (NumberFormatException e){
-            System.err.println("El numero no puede estar vacio");
-        }catch(NullPointerException e){
-            System.err.println("No puede estar vacio");
-        }
+        
+            } catch (NumberFormatException e) {
+                System.err.println("Ingrese un numero");
+            }
+        } while (num < 0);
         return num;
     }
 
